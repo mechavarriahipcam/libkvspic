@@ -1,5 +1,5 @@
 #include "Include_i.h"
-
+#include "pthread_patch"
 #if defined _WIN32 || defined _WIN64 || defined __CYGWIN__
 
 //
@@ -275,7 +275,7 @@ CleanUp:
 PUBLIC_API STATUS defaultCancelThread(TID threadId)
 {
     STATUS retStatus = STATUS_SUCCESS;
-    INT32 cancelResult = pthread_cancel((pthread_t) threadId);
+    INT32 cancelResult = pthread_kill((pthread_t) threadId);
 
     switch (cancelResult) {
         case 0:
