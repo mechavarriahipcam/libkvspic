@@ -1,5 +1,7 @@
 #include "Include_i.h"
 #include "pthread_patch.h"
+#include <signals.h>
+
 #if defined _WIN32 || defined _WIN64 || defined __CYGWIN__
 
 //
@@ -253,7 +255,7 @@ PUBLIC_API VOID defaultThreadSleep(UINT64 time)
 PUBLIC_API STATUS defaultCancelThread(TID threadId)
 {
     STATUS retStatus = STATUS_SUCCESS;
-    INT32 cancelResult = pthread_kill((pthread_t) threadId, 0);
+    INT32 cancelResult = pthread_kill(thread_id,SIGUSR1);
 
     switch (cancelResult) {
         case 0:
@@ -275,7 +277,7 @@ CleanUp:
 PUBLIC_API STATUS defaultCancelThread(TID threadId)
 {
     STATUS retStatus = STATUS_SUCCESS;
-    INT32 cancelResult = pthread_kill((pthread_t) threadId);
+    INT32 cancelResult = pthread_kill(thread_id,SIGUSR1);
 
     switch (cancelResult) {
         case 0:
