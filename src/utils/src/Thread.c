@@ -1,6 +1,6 @@
 #include "Include_i.h"
 #include "pthread_patch.h"
-#include <signals.h>
+
 
 #if defined _WIN32 || defined _WIN64 || defined __CYGWIN__
 
