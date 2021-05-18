@@ -279,6 +279,7 @@ PUBLIC_API STATUS defaultCancelThread(TID threadId)
 {
     STATUS retStatus = STATUS_SUCCESS;
     INT32 cancelResult = pthread_cancel((pthread_t) threadId);
+			 
 
 
     switch (cancelResult) {
