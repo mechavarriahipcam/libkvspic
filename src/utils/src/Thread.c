@@ -255,7 +255,8 @@ PUBLIC_API VOID defaultThreadSleep(UINT64 time)
 PUBLIC_API STATUS defaultCancelThread(TID threadId)
 {
     STATUS retStatus = STATUS_SUCCESS;
-    INT32 cancelResult = pthread_kill(thread_id,SIGUSR1);
+    INT32 cancelResult = pthread_kill((pthread_t) threadId, 0);
+
 
     switch (cancelResult) {
         case 0:
@@ -277,7 +278,8 @@ CleanUp:
 PUBLIC_API STATUS defaultCancelThread(TID threadId)
 {
     STATUS retStatus = STATUS_SUCCESS;
-    INT32 cancelResult = pthread_kill(thread_id,SIGUSR1);
+    INT32 cancelResult = pthread_cancel((pthread_t) threadId);
+
 
     switch (cancelResult) {
         case 0:
