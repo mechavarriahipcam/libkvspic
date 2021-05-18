@@ -1,5 +1,5 @@
 <h1 align="center">
-  Amazon Kinesis Video Streams PIC
+  Amazon Kinesis Video Streams PIC Pathc
   <br>
 </h1>
 
